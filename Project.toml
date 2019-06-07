@@ -1,3 +1,9 @@
+name = "ONNX"
+uuid = "f7f410a0-896b-11e9-8dde-3f2420dc51cc"
+authors = ["Steven R. Young <stevenryoung@gmail.com>"]
+version = "1.0.0-young"
+
+
 [deps]
 BSON = "fbb218c0-5317-5bc6-957e-2ee96dd4b1f0"
 Compat = "34da2185-b29b-5c13-b0c7-acf172513d20"
