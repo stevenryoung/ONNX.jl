@@ -2,6 +2,7 @@ using DataFlow: Call, constant, inputnode, syntax
 
 const ops = Dict{Symbol,Any}()
 include("ops.jl")
+include("../convert.jl")
 
 # This is to fetch weights when they are stored in
 # the constant tensor and not in intializer.
@@ -10,9 +11,10 @@ function get_weights(g::Types.Graph)
   for node in g.node
     if node.op_type == "Constant"
       if haskey(node.attribute, :value)
-        tensor = node.attribute[:value].float_data
-        tensor = reshape(tensor, reverse(Tuple(node.attribute[:value].dims)))
-        temp[node.name] = tensor
+        #tensor = node.attribute[:value].float_data
+        #tensor = reshape(tensor, reverse(Tuple(node.attribute[:value].dims)))
+        #temp[node.name] = tensor
+        temp[node.name] = get_array(node.attribute[:value])
       end
     end
   end
